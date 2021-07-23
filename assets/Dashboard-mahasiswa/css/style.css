@@ -1,0 +1,232 @@
+@font-face {
+    font-family: "Recolita bold";
+    src: url("../Fonts/Recoleta-Bold.ttf");
+}
+@font-face {
+    font-family: "Recolita semibold";
+    src: url("../Fonts/Recoleta-SemiBold.ttf");
+}
+@font-face {
+    font-family: "Poppins regular";
+    src: url("../Fonts/Poppins-Regular.ttf");
+}
+@font-face {
+    font-family: "Poppins semibold";
+    src: url("../Fonts/Poppins-SemiBold.ttf");
+}
+/* scrollbar custom */
+::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+::-webkit-scrollbar{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb{
+	background-color: #241F4A;
+}
+
+/* navbar sections start */
+.navbar{
+    background: linear-gradient(#2166B0, rgb(17,51,88,0));
+    background-color: transparent;
+}
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+.navbar-toggler-icon{
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(246,233,108, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+.navbar-brand{
+    font-family: "Recolita bold";
+    font-size: 28px;
+    color: #F6E96C;
+    transition: all .3s ease;
+}
+.navbar-brand:hover{
+    color: #fff27d;
+}
+.nav-link{
+    font-family: "Poppins semibold";
+    font-size: 22px;
+    color: #F6E96C;
+    transition: all .3s ease;
+    margin: 0 10px;
+}
+.nav-link:hover{
+    color: #fff27d;
+    background-color: rgb(5,5,5,10%);
+    border-radius: 37px;
+    padding: 6px 20px;
+}
+.nav-link:focus{
+    color: #F6E96C;
+}
+/* intro section start */
+.intro{
+    /*background: linear-gradient(#A7D3EC,#BEF3FB);*/
+    min-height: 100vh;
+}
+.intro h1{
+    margin-top: 30vh;
+    font-family: "Recolita bold";
+    font-size: 3em;
+    color: #2166B0;
+}
+.intro .nama{
+    font-size: 2em;
+    color: #E6584C;
+}
+.intro h2{
+    font-family: "Poppins semibold";
+    font-size: 2rem;
+    color: #2166B0;
+    margin-bottom: 1em;
+}
+.intro .nmr-kelompok{
+    color: #E6584C;
+}
+.intro .nmr-hari{
+    color: #E6584C;
+}
+.intro button{
+    color: #2166B0;
+    transition: all .2s ease-in;
+    font-size: 25px;
+    padding-bottom: 12px;
+}
+.intro button:hover{
+    color: #E6584C;
+}
+.intro button:focus{
+    color: #E6584C;
+    box-shadow: none;
+}
+.intro a{
+    font-family: "Poppins semibold";
+    color: white;   
+    font-size: 25px;
+    border-radius: 37px;
+    margin: 10px 5px;
+}
+.intro .zoom{
+    background: #2C8BFE;
+    padding: 6px 1.5em;
+    transition: all .2s ease-in;
+    border: 2px solid #2C8BFE;
+}
+.intro .zoom:hover{
+    background: white;
+    color: #2C8BFE;
+    border: 2px solid #2C8BFE;
+}
+.intro .img-zoom{
+    width: 2.3rem;
+}
+.intro .presensi{
+    background: #E6584C;
+    padding: 6px 2em;
+    transition: all .2s ease-in;
+    border: 2px solid #E6584C;
+}
+.intro .presensi:hover{
+    background: white;
+    color: #E6584C;
+    border: 2px solid #E6584C;
+}
+
+/* modal section start */
+.modal{
+    font-family: "Poppins";
+}
+
+/* rundown section start */
+.rundown{
+    background: linear-gradient(#25A880,#24A77E,#098950);
+    min-height: 100vh;
+}
+.rundown h1{
+    font-family: "Recoleta semibold";
+    font-size: 90px;
+    color: #F6E96C;
+}
+
+.rundown th{
+    font-family: "Poppins semibold";
+    font-size: 20px;
+    color: white;
+    background-color: #3C6EB3;
+}
+.rundown td{
+    font-family: "Poppins regular";
+    border: 1px solid lightgrey;
+}
+.link-test{
+    background-color: #3C6EB3;
+    border-radius: 22px;
+    font-family: "Poppins semibold";
+    font-size: 12px;
+    padding: 6px 12px;
+    color: white;
+    text-decoration: none;
+    border: 2px solid #3C6EB3;
+}
+.link-test:hover{
+    background-color: white;
+    color: #3C6EB3;
+}
+
+/* footer section start */
+.footer{
+    background:linear-gradient(120deg,#3A326E 60%,#241F4A);
+    color: white;
+}
+.footer h2{
+    font-family: "Poppins semibold";
+}
+.footer p{
+    font-family: "Poppins regular";
+}
+.logo-footer{
+    font-family: "Recolita bold";
+    font-size: 28px;
+    color: #F6E96C;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+.logo-footer:hover{
+    color: #fff27d;
+}
+.logo-footer img{
+    width: 2qem;
+}
+.footer .icon{
+    font-size: 28px;
+    color: white;
+    transition: all .2s ease-in;
+}
+.footer .icon:hover{
+    color: #F6E96C;
+}
+
+
+@media(max-width:768px){
+    .intro .nama{
+        font-size: 50px;
+    }
+    .intro h2{
+        font-size: 25px;
+    }
+    .rundown h1{
+        font-size: 50px;
+    }
+}
+@media(max-width:388px) {
+    .navbar-brand{
+        font-size: 22px;
+    }
+    .intro h1{
+        margin-top: 30vh;
+    }
+}

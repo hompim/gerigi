@@ -59,5 +59,5 @@ $route['ChangePass'] = 'Home/changePwd';
 
 $route['Admin'] = 'Admin';
 $route['Shorten'] = 'Shorten';
-
-$route['(:any)'] = 'Shorten/direct/$1';
+$route['Home'] = 'Home';
+// $route['(:any)'] = 'Shorten/direct/$1';
