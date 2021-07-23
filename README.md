@@ -2,15 +2,16 @@
 
 ## Login admin
 
-username : admin
+username : admin  
 password : haiadmin123
 
 login admin menggunakan hardcode pada controller login fungsi loginAct
 
 ## Database
 
-nama database adalah gerigi
-untuk file sql database ada di root pada folder database dengan nama gerigi.sql
+nama database adalah gerigi  
+untuk file sql database ada di root pada folder database  
+file sql dengan nama gerigiStructureOnly akan membuat struktur databasenya saja tanpa data sedangkan untuk file gerigiWithDummyData adalah database dengan data dummy yang digunakan selama proses produksi
 
 ## Folder assets dan view
 

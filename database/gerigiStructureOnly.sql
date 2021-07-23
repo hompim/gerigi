@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2021 at 06:15 PM
+-- Generation Time: Jul 23, 2021 at 05:39 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -24,6 +24,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `link`
+--
+
+CREATE TABLE `link` (
+  `id` int(11) NOT NULL,
+  `id_kls_bsr` int(11) NOT NULL,
+  `dateUse` date NOT NULL,
+  `dateCreate` date NOT NULL,
+  `link_zoom` varchar(256) NOT NULL,
+  `link_presensi` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkrundown`
+--
+
+CREATE TABLE `linkrundown` (
+  `idTest` int(11) NOT NULL,
+  `idRundown` int(11) NOT NULL,
+  `link` varchar(256) NOT NULL,
+  `idKelBesar` int(11) NOT NULL,
+  `dateUse` date NOT NULL,
+  `dateCreate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbkelbesar`
 --
 
@@ -34,13 +64,6 @@ CREATE TABLE `tbkelbesar` (
   `cpPicKelBesar` varchar(100) NOT NULL,
   `dateCreate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tbkelbesar`
---
-
-INSERT INTO `tbkelbesar` (`idKelBesar`, `namaKelBesar`, `namaPicKelBesar`, `cpPicKelBesar`, `dateCreate`) VALUES
-(1, 'Kesehatan', 'Daffa', 'daffa', '2021-07-22 17:33:34');
 
 -- --------------------------------------------------------
 
@@ -57,12 +80,20 @@ CREATE TABLE `tbkelkecil` (
   `dateCreate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `tbkelkecil`
+-- Table structure for table `tbrundown`
 --
 
-INSERT INTO `tbkelkecil` (`idKelKecil`, `namaKelKecil`, `idKelBesar`, `namaPicKelKecil`, `cpPicKelKecil`, `dateCreate`) VALUES
-(1, 'Rumah Sakit', 1, 'Daffa', 'daffa (line)', '2021-07-22 17:37:20');
+CREATE TABLE `tbrundown` (
+  `idRundown` int(11) NOT NULL,
+  `nama` varchar(256) NOT NULL,
+  `jam` time NOT NULL,
+  `hasLink` varchar(256) NOT NULL,
+  `dateUse` date NOT NULL,
+  `dateCreate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -83,15 +114,20 @@ CREATE TABLE `tbuser` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tbuser`
---
-
-INSERT INTO `tbuser` (`idUser`, `username`, `userPass`, `nama`, `idKelBesar`, `idKelKecil`, `role`, `status`, `dateUpdate`) VALUES
-(1, '05311940000019', '552953323f8676afbc885a686b183c9f', 'Dida Prasetyo Rahmat', 1, 1, 'maba', 0, '2021-07-22 17:29:42');
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `link`
+--
+ALTER TABLE `link`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `linkrundown`
+--
+ALTER TABLE `linkrundown`
+  ADD PRIMARY KEY (`idTest`);
 
 --
 -- Indexes for table `tbkelbesar`
@@ -104,6 +140,12 @@ ALTER TABLE `tbkelbesar`
 --
 ALTER TABLE `tbkelkecil`
   ADD PRIMARY KEY (`idKelKecil`);
+
+--
+-- Indexes for table `tbrundown`
+--
+ALTER TABLE `tbrundown`
+  ADD PRIMARY KEY (`idRundown`);
 
 --
 -- Indexes for table `tbuser`
@@ -119,19 +161,19 @@ ALTER TABLE `tbuser`
 -- AUTO_INCREMENT for table `tbkelbesar`
 --
 ALTER TABLE `tbkelbesar`
-  MODIFY `idKelBesar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idKelBesar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbkelkecil`
 --
 ALTER TABLE `tbkelkecil`
-  MODIFY `idKelKecil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idKelKecil` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbuser`
 --
 ALTER TABLE `tbuser`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

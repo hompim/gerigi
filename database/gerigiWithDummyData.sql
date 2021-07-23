@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2021 at 03:36 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.8
+-- Generation Time: Jul 23, 2021 at 05:37 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,8 +41,8 @@ CREATE TABLE `link` (
 --
 
 INSERT INTO `link` (`id`, `id_kls_bsr`, `dateUse`, `dateCreate`, `link_zoom`, `link_presensi`) VALUES
-(1, 1, '2021-07-24', '2021-07-23', 'https://zoom.us/day1', 'https://intip.in/Absenday1'),
-(2, 1, '2021-07-25', '2021-07-24', 'https://zoom.us/day2', 'https://intip.in/Absenday1');
+(1, 1, '2021-07-23', '2021-07-23', 'https://zoom.us/day1', 'https://intip.in/Absenday1'),
+(2, 1, '2021-07-24', '2021-07-24', 'https://zoom.us/day2', 'https://intip.in/Absenday1');
 
 -- --------------------------------------------------------
 
@@ -131,25 +130,10 @@ CREATE TABLE `tbrundown` (
 --
 
 INSERT INTO `tbrundown` (`idRundown`, `nama`, `jam`, `hasLink`, `dateUse`, `dateCreate`) VALUES
-(1, 'Pembukaan', '09:00:00', 'Tidak', '2021-07-24', '2021-07-23'),
-(2, 'Pretest', '09:15:00', 'Ya', '2021-07-24', '2021-07-23'),
-(3, 'Materi', '09:30:00', 'Tidak', '2021-07-24', '2021-07-23'),
-(4, 'Postest', '10:30:00', 'Ya', '2021-07-24', '2021-07-23');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbtugas`
---
-
-CREATE TABLE `tbtugas` (
-  `idTugas` int(11) NOT NULL,
-  `idUser` int(11) NOT NULL,
-  `idKelasBesar` int(11) NOT NULL,
-  `idKelasKecil` int(11) NOT NULL,
-  `link` varchar(256) NOT NULL,
-  `dateCreate` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(1, 'Pembukaan', '09:00:00', 'Tidak', '2021-07-23', '2021-07-23'),
+(2, 'Pretest', '09:15:00', 'Ya', '2021-07-23', '2021-07-23'),
+(3, 'Materi', '09:30:00', 'Tidak', '2021-07-23', '2021-07-23'),
+(4, 'Postest', '10:30:00', 'Ya', '2021-07-23', '2021-07-23');
 
 -- --------------------------------------------------------
 
@@ -164,8 +148,8 @@ CREATE TABLE `tbuser` (
   `nama` varchar(255) NOT NULL,
   `idKelBesar` int(11) NOT NULL,
   `idKelKecil` int(11) NOT NULL,
-  `role` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `role` text NOT NULL DEFAULT 'maba',
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   `dateUpdate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -174,7 +158,9 @@ CREATE TABLE `tbuser` (
 --
 
 INSERT INTO `tbuser` (`idUser`, `username`, `userPass`, `nama`, `idKelBesar`, `idKelKecil`, `role`, `status`, `dateUpdate`) VALUES
-(1, '05311940000019', '552953323f8676afbc885a686b183c9f', 'Dida Prasetyo Rahmat', 1, 1, 'maba', 0, '2021-07-22 17:29:42');
+(1, '05311940000019', 'ef8961d24bdfaff391c292cd82fd3bed', 'Dida Prasetyo Rahmat', 1, 1, 'maba', 1, '2021-07-22 17:29:42'),
+(2, '1234567890', 'ef8961d24bdfaff391c292cd82fd3bed', 'Anggota ke-2', 1, 1, 'maba', 1, '2021-07-23 17:22:02'),
+(3, '123123123', 'f5bb0c8de146c67b44babbf4e6584cc0', 'Bambang', 1, 1, 'maba', 0, '2021-07-23 17:23:31');
 
 --
 -- Indexes for dumped tables
@@ -184,8 +170,7 @@ INSERT INTO `tbuser` (`idUser`, `username`, `userPass`, `nama`, `idKelBesar`, `i
 -- Indexes for table `link`
 --
 ALTER TABLE `link`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_kls_bsr` (`id_kls_bsr`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `linkrundown`
@@ -212,12 +197,6 @@ ALTER TABLE `tbrundown`
   ADD PRIMARY KEY (`idRundown`);
 
 --
--- Indexes for table `tbtugas`
---
-ALTER TABLE `tbtugas`
-  ADD PRIMARY KEY (`idTugas`);
-
---
 -- Indexes for table `tbuser`
 --
 ALTER TABLE `tbuser`
@@ -226,18 +205,6 @@ ALTER TABLE `tbuser`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `link`
---
-ALTER TABLE `link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `linkrundown`
---
-ALTER TABLE `linkrundown`
-  MODIFY `idTest` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbkelbesar`
@@ -252,22 +219,10 @@ ALTER TABLE `tbkelkecil`
   MODIFY `idKelKecil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbrundown`
---
-ALTER TABLE `tbrundown`
-  MODIFY `idRundown` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbtugas`
---
-ALTER TABLE `tbtugas`
-  MODIFY `idTugas` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `tbuser`
 --
 ALTER TABLE `tbuser`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

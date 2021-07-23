@@ -47,15 +47,18 @@
                         <h1>Selamat datang,<!-- di GERIGI day <span class="nmr-hari">0</span>,--><br><span class="nama"><?=$this->session->userdata('nama'); ?></span></h1>
                         <h2>Kamu berada di kelompok besar <span class="nmr-kelompok"><?=$klmpkbesar['namaKelBesar'] ?></span><br> Kelompok kecil <span class="nmr-kelompok"><?=$klmpkkecil['namaKelKecil'] ?></span><button type="button" class="btn ms-1 rounded-circle" data-bs-toggle="modal" data-bs-target="#anggota-kelompok"  title="Anggota kelompok">
                           <i class="fa fa-users" aria-hidden="true"></i>
-                        </button><br>GERIGI day - <span class="nmr-hari"><?php if (date('Y-m-d')=='2021-08-13') {
-                          echo "1";
-                        }elseif (date('Y-m-d')=='2021-08-14') {
-                          echo "2";
-                        }elseif (date('Y-m-d')=='2021-08-15') {
-                          echo "3";
-                        }else{
-                          echo "0";
-                        } ?></span></h2>
+                        </button>
+                        <br>
+                        GERIGI hari ke - <span class="nmr-hari">
+                          <?php if (date('Y-m-d')=='2021-08-13') {
+                            echo "1";
+                          }elseif (date('Y-m-d')=='2021-08-14') {
+                            echo "2";
+                          }elseif (date('Y-m-d')=='2021-08-15') {
+                            echo "3";
+                          }else{
+                            echo "0";
+                          } ?></span></h2>
                         <a href="<?php if ($link==NULL) {
                           echo "#";
                         }else{
