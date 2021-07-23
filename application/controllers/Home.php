@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -19,15 +20,16 @@ class Home extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	function __construct(){
-		parent::__construct();		
+	function __construct()
+	{
+		parent::__construct();
 		$this->load->model('ModelLogin');
-		$this->load->helper('form','url');
+		$this->load->helper('form', 'url');
 	}
 
 	public function index()
 	{
-		if($this->session->userdata('status') == "login"){
+		if ($this->session->userdata('status') == "login") {
 			if ($this->session->userdata('role') == "admin") {
 				redirect('Admin');
 			} else if ($this->session->userdata('role') == "maba" && $this->session->userdata('statusPwd') == 1) {
@@ -61,16 +63,16 @@ class Home extends CI_Controller {
 				'username' => $username,
 				'userPass' => md5($password)
 			);
-			$cek = $this->ModelLogin->getWhere("tbUser",$where);
+			$cek = $this->ModelLogin->getWhere("tbUser", $where);
 			$rows = $cek->num_rows();
-			if($rows > 0){
+			if ($rows > 0) {
 				$cek = $cek->row_array();
 				$data_session = array(
 					'id'		=> $cek['idUser'],
 					'username'	=> $cek['username'],
 					'nama'		=> $cek['nama'],
-					'idKelBesar'=> $cek['idKelBesar'],
-					'idKelKecil'=> $cek['idKelKecil'],
+					'idKelBesar' => $cek['idKelBesar'],
+					'idKelKecil' => $cek['idKelKecil'],
 					'role'		=> $cek['role'],
 					'statusPwd' => $cek['status'],
 					'status'	=> "login"
@@ -90,7 +92,7 @@ class Home extends CI_Controller {
 
 	public function changePwd()
 	{
-		if($this->session->userdata('status') != "login"){
+		if ($this->session->userdata('status') != "login") {
 			redirect('Home');
 		} else {
 			$this->load->view('Homepage/changePass');
@@ -111,7 +113,7 @@ class Home extends CI_Controller {
 			'idUser' => $idUser
 		);
 
-		$this->ModelLogin->updatePass($where,$data,'tbUser');
+		$this->ModelLogin->updatePass($where, $data, 'tbUser');
 		$this->session->set_userdata('statusPwd', 1);
 		redirect('Home');
 	}

@@ -1,26 +1,23 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends CI_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+		date_default_timezone_set("Asia/Jakarta");
+	}
 	public function index()
 	{
-		// $this->load->view('welcome_message');
-		print("selamat datang di dashboard admin");
+		$data = [
+			'title'			=> 'Admin'
+		];
+		$this->load->view('Adminpage/Templates/header', $data);
+		$this->load->view('Adminpage/Templates/navbar');
+		$this->load->view('Adminpage/Templates/sidebar', $data);
+		$this->load->view('Adminpage/index');
+		$this->load->view('Adminpage/Templates/footer');
 	}
 }
