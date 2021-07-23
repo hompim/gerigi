@@ -1,0 +1,111 @@
+@font-face {
+  font-family: Recoleta-Bold;
+  src: url(../font/Recoleta-Bold.ttf);
+}
+
+@font-face {
+  font-family: Recoleta-SemiBold;
+  src: url(../font/Recoleta-SemiBold.ttf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.color-blue {
+  color: #2166B0;
+}
+
+.color-red {
+  color: #DF403B;
+}
+
+.color-brown {
+  color: #AD7C58;
+}
+
+.color-green {
+  color: #39A46C;
+}
+
+.color-yellow {
+  color: #F6E96C;
+}
+
+.transparent {
+  display: none;
+}
+
+/*.title {
+  background: linear-gradient(#a6d2eb, #a7d3ec, #c2f9fe);
+  height: 100%;
+}*/
+/*
+html, body {
+  height: 100%;
+  margin: 0;
+}*/
+
+h1 {
+  font-family: Recoleta-Bold;
+  font-weight: normal;
+  font-size: 4em;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Poppins';
+  font-weight: 800;
+  font-size: 2em;
+  text-align: center;
+}
+
+h3 {
+  font-family: Recoleta-Bold;
+  font-weight: normal;
+  font-size: 2em;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+label {
+  font-size: 1.1em;
+  margin: 1.1em 0em 0.5em 0.2em;
+}
+
+p {
+  margin: 1.1em 0em 0.5em 0.2em;
+}
+
+.button-yellow {
+  font-family: 'Recoleta-SemiBold';
+  font-weight: 600;
+  font-size: 1.5em;
+  color: #3C6EB3;
+  text-align: center;
+  border-radius: 34.5px;
+  background: #F6E96C;
+  border: 4px solid #F6E96C;
+}
+
+.button-yellow:hover {
+  /*color: #F6E96C;*/
+  background: transparent;
+  border: 4px solid #F6E96C;
+}
+
+.form-box {
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: ghostwhite;
+}
+
+.form-button {
+  margin-top: 2em;
+}
+
+.title-login-button {
+  margin: auto 3em;
+  margin-top: 1.5em;
+}
