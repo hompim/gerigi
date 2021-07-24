@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2021 at 05:37 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Jul 24, 2021 at 04:33 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -138,6 +138,20 @@ INSERT INTO `tbrundown` (`idRundown`, `nama`, `jam`, `hasLink`, `dateUse`, `date
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbshorten`
+--
+
+CREATE TABLE `tbshorten` (
+  `id` int(11) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `shorten` varchar(256) NOT NULL,
+  `origin` varchar(256) NOT NULL,
+  `date_created` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbuser`
 --
 
@@ -197,6 +211,12 @@ ALTER TABLE `tbrundown`
   ADD PRIMARY KEY (`idRundown`);
 
 --
+-- Indexes for table `tbshorten`
+--
+ALTER TABLE `tbshorten`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbuser`
 --
 ALTER TABLE `tbuser`
@@ -217,6 +237,12 @@ ALTER TABLE `tbkelbesar`
 --
 ALTER TABLE `tbkelkecil`
   MODIFY `idKelKecil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbshorten`
+--
+ALTER TABLE `tbshorten`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbuser`
