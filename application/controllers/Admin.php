@@ -6,7 +6,7 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-
+		$this->load->model('ModelAdmin');
 		date_default_timezone_set("Asia/Jakarta");
 	}
 
@@ -49,7 +49,8 @@ class Admin extends CI_Controller
 	public function tasks()
 	{
 		$data = [
-			'title'			=> 'Tugas'
+			'title'			=> 'Tugas',
+			'lists'			=> $this->ModelAdmin->getTasks()
 		];
 		$this->load->view('Adminpage/Templates/header', $data);
 		$this->load->view('Adminpage/Templates/navbar');
