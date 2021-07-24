@@ -35,7 +35,7 @@ https://docs.google.com/spreadsheets/d/1X1c3gK3tTahrwNHqFC37YggeN14firZYp9AyvfDO
 5. `git push (nama remote repo/link langsung) (nama branch)` => ex: `git push origin master`, harus melakukan point nomer 4 terlebih dahulu jika ingin menyinkat linknya atau bisa menggunakan `git push https://github.com/Webnya-Gerigi2021/Dashboard-mahasiswa master` jika males setting remote hehe.
 
 ### Melakukan pull request
-Sangat disarankan melakukan pull terlebih dahulu jika ingin push ke branch utama, namun akan sangat munkin terjadi conflict pada kode yang sudah dikerjakan. kalo males benerin conflict (i know that was kinda hard to fix this) silahkan membuat branch baru pada repository dan serahkan kepada yang ngedit readme ini untuk fixnya //sad noises
+Sangat disarankan melakukan pull terlebih dahulu jika ingin push ke branch utama, namun akan sangat munkin terjadi conflict pada kode yang sudah dikerjakan. kalo males ketemu sama conflict (i know that was kinda hard to fix this) silahkan membuat branch baru pada repository dan serahkan kepada yang menambahkan tutorial penggunaan pada readme ini untuk mergenya //sad noises
 1. `git pull (remote repo/link) (nama branch)` => ex: `git pull origin master`  
 
 ### Mengecek dan membuat branch baru
