@@ -46,6 +46,36 @@
           </ul>
         </li>
 
+        <!-- Zoom & Presensi Menu -->
+        <li class="nav-item">
+          <a href="<?= base_url('Admin/link'); ?>" class="nav-link <?= $title == 'Zoom & Presensi' ? 'active' : ''; ?>">
+            <i class="nav-icon fas fa-concierge-bell"></i>
+            <p>
+              Zoom & Presensi
+            </p>
+          </a>
+        </li>
+
+        <!-- Pretest & Posttest Menu -->
+        <li class="nav-item">
+          <a href="<?= base_url('Admin/tests'); ?>" class="nav-link <?= $title == 'Pretest & Posttest' ? 'active' : ''; ?>">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+              Pretest & Posttest
+            </p>
+          </a>
+        </li>
+
+        <!-- Tugas Menu -->
+        <li class="nav-item">
+          <a href="<?= base_url('Admin/tasks'); ?>" class="nav-link <?= $title == 'Tugas' ? 'active' : ''; ?>">
+            <i class="nav-icon fas fa-tasks"></i>
+            <p>
+              Tugas
+            </p>
+          </a>
+        </li>
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

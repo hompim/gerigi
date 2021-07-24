@@ -45,7 +45,7 @@ class Shorten extends CI_Controller
         'date_created'  => date("Y-m-d H:i:s")
       ];
       $this->db->insert('tbshorten', $data);
-      redirect('shorten');
+      redirect('shorten/list');
     }
   }
 

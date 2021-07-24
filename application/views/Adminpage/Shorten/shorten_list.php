@@ -59,7 +59,7 @@
                       <?= $list['origin']; ?>
                     </a>
                   </td>
-                  <td>
+                  <td class="text-center">
                     <a href="<?= base_url('shorten/delete_shorten?shorten=' . $list['shorten']); ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                   </td>
                 </tr>

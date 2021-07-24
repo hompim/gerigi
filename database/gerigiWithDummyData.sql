@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2021 at 04:33 AM
+-- Generation Time: Jul 24, 2021 at 05:14 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -86,7 +86,7 @@ CREATE TABLE `tbkelbesar` (
 --
 
 INSERT INTO `tbkelbesar` (`idKelBesar`, `namaKelBesar`, `namaPicKelBesar`, `cpPicKelBesar`, `dateCreate`) VALUES
-(1, 'Kesehatan', 'Daffa', 'daffa', '2021-07-22 17:33:34');
+(1, 'Covid', 'Hendry', 'Hendry', '2021-07-22 17:33:34');
 
 -- --------------------------------------------------------
 
@@ -108,7 +108,7 @@ CREATE TABLE `tbkelkecil` (
 --
 
 INSERT INTO `tbkelkecil` (`idKelKecil`, `namaKelKecil`, `idKelBesar`, `namaPicKelKecil`, `cpPicKelKecil`, `dateCreate`) VALUES
-(1, 'Rumah Sakit', 1, 'Daffa', 'daffa (line)', '2021-07-22 17:37:20');
+(1, 'Isoman', 1, 'Hendry', 'Dida(line)', '2021-07-22 17:37:20');
 
 -- --------------------------------------------------------
 
@@ -148,6 +148,14 @@ CREATE TABLE `tbshorten` (
   `origin` varchar(256) NOT NULL,
   `date_created` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbshorten`
+--
+
+INSERT INTO `tbshorten` (`id`, `name`, `shorten`, `origin`, `date_created`) VALUES
+(1, 'Breakpoint', 'Breakpoint', 'https://breakpoint.id/', '2021-07-24 09:56:36'),
+(2, 'Daffa', 'Daffa', 'http://daffakurnia.me', '2021-07-24 10:06:52');
 
 -- --------------------------------------------------------
 
@@ -242,7 +250,7 @@ ALTER TABLE `tbkelkecil`
 -- AUTO_INCREMENT for table `tbshorten`
 --
 ALTER TABLE `tbshorten`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbuser`
