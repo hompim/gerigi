@@ -63,12 +63,20 @@
                           echo "#";
                         }else{
                           echo $link['link_zoom'];
-                        } ?>" target="_blank" class="zoom btn mx-2"><img src="<?=base_url('assets/Dashboard-mahasiswa/') ?>img/NicePng_youtube-icon-png_10087079.svg" alt="" class="img-zoom"> Link Zoom</a>
+                        } ?>" <?php if ($link==NULL) {
+                          echo "";
+                        }else{ ?>
+                          target="_blank";
+                        <?php } ?> class="zoom btn mx-2"><img src="<?=base_url('assets/Dashboard-mahasiswa/') ?>img/NicePng_youtube-icon-png_10087079.svg" alt="" class="img-zoom"> Link Zoom</a>
                         <a href="<?php if ($link==NULL) {
                           echo "#";
                         }else{
                           echo $link['link_presensi'];
-                        } ?>" target="_blank" class="presensi btn mx-2">Presensi</a>
+                        } ?>" <?php if ($link==NULL) {
+                          echo "";
+                        }else{ ?>
+                          target="_blank";
+                        <?php } ?> class="presensi btn mx-2">Presensi</a>
                     </div>
                 </div>
             </div>
@@ -106,7 +114,7 @@
                    <?php } ?>
                </tbody>
             </table>
-              </table>
+              <!-- </table> -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -153,6 +161,44 @@
                              }else{ ?>
                                <a target="_blank" href="<?=base_url('Mahasiswa/get_link/').$data['idRundown'] ?>" class="link-test btn">Link <?=$data['nama'] ?></a>
                              <?php } ?></td>
+                         </tr>
+                         <?php } ?>
+                     </tbody>
+                  </table>
+                  <div class="row text-center">
+                      <h1 class="my-5">Info Penugasan</h1>
+                  </div>
+                  <table style="width: 88%;" class="table table-striped">
+                    <colgroup>
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 35%;">
+                        <col span="1" style="width: 35%;">
+                        <!-- <col span="1" style="width: 35%;"> -->
+                     </colgroup>
+                     <tbody>
+                         <tr>
+                             <th>No</th>
+                             <th>Nama</th>
+                             <th>Keterangan</th>
+                             <!-- <th>Link</th> -->
+                         </tr>
+                         <?php
+                         if ($info_tugas == NULL) { ?>
+                         <tr style="background-color: white;">
+                             <td colspan="4">-</td>
+                         </tr>
+                          <?php } 
+                         $no=1;
+                         foreach ($info_tugas as $data) { ?>  
+                         <tr style="background-color: white;">
+                             <td><?=$no++ ?></td>
+                             <td><?=$data['nama'] ?></td>
+                             <td><?=$data['keterangan'] ?></td>
+                             <!-- <td><?php if ($data['hasLink']=='Tidak') {
+                               echo "-";
+                             }else{ ?>
+                               <a target="_blank" href="<?=base_url('Mahasiswa/get_link/').$data['idRundown'] ?>" class="link-test btn">Link <?=$data['nama'] ?></a>
+                             <?php } ?></td> -->
                          </tr>
                          <?php } ?>
                      </tbody>

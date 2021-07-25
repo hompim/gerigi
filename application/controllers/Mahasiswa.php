@@ -37,6 +37,7 @@ class Mahasiswa extends CI_Controller {
 		$idKelBesar = $this->session->userdata('idKelBesar');
 		$dateUse = date('Y-m-d');
 		$data['link'] = $this->db->query("SELECT * FROM link WHERE id_kls_bsr='$idKelBesar' AND dateUse='$dateUse'")->row_array();
+		$data['info_tugas'] = $this->db->get_where('tbinfotugas', ['dateUse' => date('Y-m-d')])->result_array();
 		$this->load->view('Dashboard-mahasiswa-main/index', $data);
 	}
 

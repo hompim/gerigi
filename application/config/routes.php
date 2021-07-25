@@ -60,6 +60,7 @@ $route['ChangePass'] = 'Home/changePwd';
 $route['Admin'] = 'Admin';
 $route['Shorten'] = 'Shorten';
 $route['Home'] = 'Home';
+$route['Mahasiswa'] = 'Mahasiswa';
 
 // INI BUAT SHORTEN LINK. Kalo masih kena route nya tambah route sendiri.
 $route['(:any)'] = 'Shorten/direct/$1';
