@@ -26,7 +26,7 @@
 
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Daftar Gerigi Shorten Link</h3>
+          <h3 class="card-title">Daftar Link Tugas Gerigi Peserta</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
