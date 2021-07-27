@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2021 at 05:14 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- Generation Time: Jul 27, 2021 at 12:06 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -70,6 +70,29 @@ INSERT INTO `linkrundown` (`idTest`, `idRundown`, `link`, `idKelBesar`, `dateUse
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbinfotugas`
+--
+
+CREATE TABLE `tbinfotugas` (
+  `id_info` int(11) NOT NULL,
+  `nama` varchar(256) NOT NULL,
+  `keterangan` varchar(512) NOT NULL,
+  `SubmitFrorm` text NOT NULL DEFAULT 'tidak',
+  `dateUse` date NOT NULL,
+  `dateCreate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbinfotugas`
+--
+
+INSERT INTO `tbinfotugas` (`id_info`, `nama`, `keterangan`, `SubmitFrorm`, `dateUse`, `dateCreate`) VALUES
+(1, 'Penugasan Pra-gerigi 1', 'melakukan cover dance jingle gerigi seperti pada contoh <a href=\"https://google.com\">berikut.</a><br>di upload paling lambat hari ke 3 pelaksanaan gerigi pada instagram masing-masing dengan caption ini itu sebagainya dan hastag kaya gini serta profile instagram publik', 'tidak', '2021-07-27', '2021-07-25'),
+(2, 'tugas gerigi day-1', 'membuat vidio tentang kontribusi yang akan di berikan untuk ITS', 'tidak', '2021-07-28', '2021-07-25');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbkelbesar`
 --
 
@@ -130,10 +153,10 @@ CREATE TABLE `tbrundown` (
 --
 
 INSERT INTO `tbrundown` (`idRundown`, `nama`, `jam`, `hasLink`, `dateUse`, `dateCreate`) VALUES
-(1, 'Pembukaan', '09:00:00', 'Tidak', '2021-07-23', '2021-07-23'),
-(2, 'Pretest', '09:15:00', 'Ya', '2021-07-23', '2021-07-23'),
-(3, 'Materi', '09:30:00', 'Tidak', '2021-07-23', '2021-07-23'),
-(4, 'Postest', '10:30:00', 'Ya', '2021-07-23', '2021-07-23');
+(1, 'Pembukaan', '09:00:00', 'Tidak', '2021-07-27', '2021-07-23'),
+(2, 'Pretest', '09:15:00', 'Ya', '2021-07-27', '2021-07-23'),
+(3, 'Materi', '09:30:00', 'Tidak', '2021-07-27', '2021-07-23'),
+(4, 'Postest', '10:30:00', 'Ya', '2021-07-27', '2021-07-23');
 
 -- --------------------------------------------------------
 
@@ -160,6 +183,30 @@ INSERT INTO `tbshorten` (`id`, `name`, `shorten`, `origin`, `date_created`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbtugas`
+--
+
+CREATE TABLE `tbtugas` (
+  `idTugas` int(11) NOT NULL,
+  `idInfoTugas` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idKelBesar` int(11) NOT NULL,
+  `idKelKecil` int(11) NOT NULL,
+  `link` varchar(256) NOT NULL,
+  `dateCreate` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbtugas`
+--
+
+INSERT INTO `tbtugas` (`idTugas`, `idInfoTugas`, `idUser`, `idKelBesar`, `idKelKecil`, `link`, `dateCreate`) VALUES
+(1, 0, 1, 1, 1, 'google.com', '2021-07-24'),
+(2, 0, 2, 1, 1, 'www.youtube.com', '2021-07-24');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbuser`
 --
 
@@ -170,7 +217,7 @@ CREATE TABLE `tbuser` (
   `nama` varchar(255) NOT NULL,
   `idKelBesar` int(11) NOT NULL,
   `idKelKecil` int(11) NOT NULL,
-  `role` text NOT NULL DEFAULT 'maba',
+  `role` text NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `dateUpdate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -201,6 +248,12 @@ ALTER TABLE `linkrundown`
   ADD PRIMARY KEY (`idTest`);
 
 --
+-- Indexes for table `tbinfotugas`
+--
+ALTER TABLE `tbinfotugas`
+  ADD PRIMARY KEY (`id_info`);
+
+--
 -- Indexes for table `tbkelbesar`
 --
 ALTER TABLE `tbkelbesar`
@@ -225,6 +278,12 @@ ALTER TABLE `tbshorten`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbtugas`
+--
+ALTER TABLE `tbtugas`
+  ADD PRIMARY KEY (`idTugas`);
+
+--
 -- Indexes for table `tbuser`
 --
 ALTER TABLE `tbuser`
@@ -233,6 +292,12 @@ ALTER TABLE `tbuser`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbinfotugas`
+--
+ALTER TABLE `tbinfotugas`
+  MODIFY `id_info` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbkelbesar`
@@ -256,7 +321,7 @@ ALTER TABLE `tbshorten`
 -- AUTO_INCREMENT for table `tbuser`
 --
 ALTER TABLE `tbuser`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2021 at 04:33 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- Generation Time: Jul 27, 2021 at 12:06 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,6 +47,21 @@ CREATE TABLE `linkrundown` (
   `idRundown` int(11) NOT NULL,
   `link` varchar(256) NOT NULL,
   `idKelBesar` int(11) NOT NULL,
+  `dateUse` date NOT NULL,
+  `dateCreate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbinfotugas`
+--
+
+CREATE TABLE `tbinfotugas` (
+  `id_info` int(11) NOT NULL,
+  `nama` varchar(256) NOT NULL,
+  `keterangan` varchar(512) NOT NULL,
+  `SubmitFrorm` text NOT NULL DEFAULT 'tidak',
   `dateUse` date NOT NULL,
   `dateCreate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -112,6 +127,22 @@ CREATE TABLE `tbshorten` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbtugas`
+--
+
+CREATE TABLE `tbtugas` (
+  `idTugas` int(11) NOT NULL,
+  `idInfoTugas` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idKelBesar` int(11) NOT NULL,
+  `idKelKecil` int(11) NOT NULL,
+  `link` varchar(256) NOT NULL,
+  `dateCreate` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbuser`
 --
 
@@ -122,7 +153,7 @@ CREATE TABLE `tbuser` (
   `nama` varchar(255) NOT NULL,
   `idKelBesar` int(11) NOT NULL,
   `idKelKecil` int(11) NOT NULL,
-  `role` text NOT NULL DEFAULT 'maba',
+  `role` text NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `dateUpdate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -142,6 +173,12 @@ ALTER TABLE `link`
 --
 ALTER TABLE `linkrundown`
   ADD PRIMARY KEY (`idTest`);
+
+--
+-- Indexes for table `tbinfotugas`
+--
+ALTER TABLE `tbinfotugas`
+  ADD PRIMARY KEY (`id_info`);
 
 --
 -- Indexes for table `tbkelbesar`
@@ -168,6 +205,12 @@ ALTER TABLE `tbshorten`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbtugas`
+--
+ALTER TABLE `tbtugas`
+  ADD PRIMARY KEY (`idTugas`);
+
+--
 -- Indexes for table `tbuser`
 --
 ALTER TABLE `tbuser`
@@ -176,6 +219,12 @@ ALTER TABLE `tbuser`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbinfotugas`
+--
+ALTER TABLE `tbinfotugas`
+  MODIFY `id_info` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbkelbesar`
