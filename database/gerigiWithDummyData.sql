@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 27, 2021 at 12:06 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jul 27, 2021 at 05:03 PM
+-- Server version: 5.7.31
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,13 +27,15 @@ SET time_zone = "+00:00";
 -- Table structure for table `link`
 --
 
-CREATE TABLE `link` (
+DROP TABLE IF EXISTS `link`;
+CREATE TABLE IF NOT EXISTS `link` (
   `id` int(11) NOT NULL,
   `id_kls_bsr` int(11) NOT NULL,
   `dateUse` date NOT NULL,
   `dateCreate` date NOT NULL,
   `link_zoom` varchar(256) NOT NULL,
-  `link_presensi` varchar(256) NOT NULL
+  `link_presensi` varchar(256) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -50,13 +52,15 @@ INSERT INTO `link` (`id`, `id_kls_bsr`, `dateUse`, `dateCreate`, `link_zoom`, `l
 -- Table structure for table `linkrundown`
 --
 
-CREATE TABLE `linkrundown` (
+DROP TABLE IF EXISTS `linkrundown`;
+CREATE TABLE IF NOT EXISTS `linkrundown` (
   `idTest` int(11) NOT NULL,
   `idRundown` int(11) NOT NULL,
   `link` varchar(256) NOT NULL,
   `idKelBesar` int(11) NOT NULL,
   `dateUse` date NOT NULL,
-  `dateCreate` date NOT NULL
+  `dateCreate` date NOT NULL,
+  PRIMARY KEY (`idTest`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -73,22 +77,24 @@ INSERT INTO `linkrundown` (`idTest`, `idRundown`, `link`, `idKelBesar`, `dateUse
 -- Table structure for table `tbinfotugas`
 --
 
-CREATE TABLE `tbinfotugas` (
-  `id_info` int(11) NOT NULL,
-  `nama` varchar(256) NOT NULL,
+DROP TABLE IF EXISTS `tbinfotugas`;
+CREATE TABLE IF NOT EXISTS `tbinfotugas` (
+  `id_info` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_tugas` varchar(256) NOT NULL,
   `keterangan` varchar(512) NOT NULL,
-  `SubmitFrorm` text NOT NULL DEFAULT 'tidak',
+  `SubmitForm` text NOT NULL DEFAULT 'tidak',
   `dateUse` date NOT NULL,
-  `dateCreate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `dateCreate` date NOT NULL,
+  PRIMARY KEY (`id_info`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbinfotugas`
 --
 
-INSERT INTO `tbinfotugas` (`id_info`, `nama`, `keterangan`, `SubmitFrorm`, `dateUse`, `dateCreate`) VALUES
-(1, 'Penugasan Pra-gerigi 1', 'melakukan cover dance jingle gerigi seperti pada contoh <a href=\"https://google.com\">berikut.</a><br>di upload paling lambat hari ke 3 pelaksanaan gerigi pada instagram masing-masing dengan caption ini itu sebagainya dan hastag kaya gini serta profile instagram publik', 'tidak', '2021-07-27', '2021-07-25'),
-(2, 'tugas gerigi day-1', 'membuat vidio tentang kontribusi yang akan di berikan untuk ITS', 'tidak', '2021-07-28', '2021-07-25');
+INSERT INTO `tbinfotugas` (`id_info`, `nama_tugas`, `keterangan`, `SubmitForm`, `dateUse`, `dateCreate`) VALUES
+(1, 'Penugasan Pra-gerigi 1', 'melakukan cover dance jingle gerigi seperti pada contoh <a href=\"https://google.com\">berikut.</a><br>di upload paling lambat hari ke 3 pelaksanaan gerigi pada instagram masing-masing dengan caption ini itu sebagainya dan hastag kaya gini serta profile instagram publik', 'tidak', '2021-07-28', '2021-07-25'),
+(2, 'tugas gerigi day-2', 'membuat vidio tentang kontribusi yang akan di berikan untuk ITS', 'tidak', '2021-07-28', '2021-07-25');
 
 -- --------------------------------------------------------
 
@@ -96,13 +102,15 @@ INSERT INTO `tbinfotugas` (`id_info`, `nama`, `keterangan`, `SubmitFrorm`, `date
 -- Table structure for table `tbkelbesar`
 --
 
-CREATE TABLE `tbkelbesar` (
-  `idKelBesar` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbkelbesar`;
+CREATE TABLE IF NOT EXISTS `tbkelbesar` (
+  `idKelBesar` int(11) NOT NULL AUTO_INCREMENT,
   `namaKelBesar` varchar(100) NOT NULL,
   `namaPicKelBesar` varchar(100) NOT NULL,
   `cpPicKelBesar` varchar(100) NOT NULL,
-  `dateCreate` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `dateCreate` datetime NOT NULL,
+  PRIMARY KEY (`idKelBesar`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbkelbesar`
@@ -117,14 +125,16 @@ INSERT INTO `tbkelbesar` (`idKelBesar`, `namaKelBesar`, `namaPicKelBesar`, `cpPi
 -- Table structure for table `tbkelkecil`
 --
 
-CREATE TABLE `tbkelkecil` (
-  `idKelKecil` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbkelkecil`;
+CREATE TABLE IF NOT EXISTS `tbkelkecil` (
+  `idKelKecil` int(11) NOT NULL AUTO_INCREMENT,
   `namaKelKecil` varchar(100) NOT NULL,
   `idKelBesar` int(11) NOT NULL,
   `namaPicKelKecil` varchar(100) NOT NULL,
   `cpPicKelKecil` varchar(100) NOT NULL,
-  `dateCreate` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `dateCreate` datetime NOT NULL,
+  PRIMARY KEY (`idKelKecil`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbkelkecil`
@@ -139,13 +149,15 @@ INSERT INTO `tbkelkecil` (`idKelKecil`, `namaKelKecil`, `idKelBesar`, `namaPicKe
 -- Table structure for table `tbrundown`
 --
 
-CREATE TABLE `tbrundown` (
+DROP TABLE IF EXISTS `tbrundown`;
+CREATE TABLE IF NOT EXISTS `tbrundown` (
   `idRundown` int(11) NOT NULL,
   `nama` varchar(256) NOT NULL,
   `jam` time NOT NULL,
   `hasLink` varchar(256) NOT NULL,
   `dateUse` date NOT NULL,
-  `dateCreate` date NOT NULL
+  `dateCreate` date NOT NULL,
+  PRIMARY KEY (`idRundown`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -164,13 +176,15 @@ INSERT INTO `tbrundown` (`idRundown`, `nama`, `jam`, `hasLink`, `dateUse`, `date
 -- Table structure for table `tbshorten`
 --
 
-CREATE TABLE `tbshorten` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbshorten`;
+CREATE TABLE IF NOT EXISTS `tbshorten` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
   `shorten` varchar(256) NOT NULL,
   `origin` varchar(256) NOT NULL,
-  `date_created` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `date_created` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbshorten`
@@ -186,14 +200,16 @@ INSERT INTO `tbshorten` (`id`, `name`, `shorten`, `origin`, `date_created`) VALU
 -- Table structure for table `tbtugas`
 --
 
-CREATE TABLE `tbtugas` (
+DROP TABLE IF EXISTS `tbtugas`;
+CREATE TABLE IF NOT EXISTS `tbtugas` (
   `idTugas` int(11) NOT NULL,
   `idInfoTugas` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
   `idKelBesar` int(11) NOT NULL,
   `idKelKecil` int(11) NOT NULL,
   `link` varchar(256) NOT NULL,
-  `dateCreate` date NOT NULL
+  `dateCreate` date NOT NULL,
+  PRIMARY KEY (`idTugas`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -201,8 +217,8 @@ CREATE TABLE `tbtugas` (
 --
 
 INSERT INTO `tbtugas` (`idTugas`, `idInfoTugas`, `idUser`, `idKelBesar`, `idKelKecil`, `link`, `dateCreate`) VALUES
-(1, 0, 1, 1, 1, 'google.com', '2021-07-24'),
-(2, 0, 2, 1, 1, 'www.youtube.com', '2021-07-24');
+(1, 1, 1, 1, 1, 'google.com', '2021-07-24'),
+(2, 2, 2, 1, 1, 'www.youtube.com', '2021-07-24');
 
 -- --------------------------------------------------------
 
@@ -210,17 +226,19 @@ INSERT INTO `tbtugas` (`idTugas`, `idInfoTugas`, `idUser`, `idKelBesar`, `idKelK
 -- Table structure for table `tbuser`
 --
 
-CREATE TABLE `tbuser` (
-  `idUser` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbuser`;
+CREATE TABLE IF NOT EXISTS `tbuser` (
+  `idUser` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(25) NOT NULL,
   `userPass` text NOT NULL,
   `nama` varchar(255) NOT NULL,
   `idKelBesar` int(11) NOT NULL,
   `idKelKecil` int(11) NOT NULL,
   `role` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 0,
-  `dateUpdate` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `dateUpdate` datetime NOT NULL,
+  PRIMARY KEY (`idUser`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbuser`
@@ -230,98 +248,6 @@ INSERT INTO `tbuser` (`idUser`, `username`, `userPass`, `nama`, `idKelBesar`, `i
 (1, '05311940000019', 'ef8961d24bdfaff391c292cd82fd3bed', 'Dida Prasetyo Rahmat', 1, 1, 'maba', 1, '2021-07-22 17:29:42'),
 (2, '1234567890', 'ef8961d24bdfaff391c292cd82fd3bed', 'Anggota ke-2', 1, 1, 'maba', 1, '2021-07-23 17:22:02'),
 (3, '123123123', 'f5bb0c8de146c67b44babbf4e6584cc0', 'Bambang', 1, 1, 'maba', 0, '2021-07-23 17:23:31');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `link`
---
-ALTER TABLE `link`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `linkrundown`
---
-ALTER TABLE `linkrundown`
-  ADD PRIMARY KEY (`idTest`);
-
---
--- Indexes for table `tbinfotugas`
---
-ALTER TABLE `tbinfotugas`
-  ADD PRIMARY KEY (`id_info`);
-
---
--- Indexes for table `tbkelbesar`
---
-ALTER TABLE `tbkelbesar`
-  ADD PRIMARY KEY (`idKelBesar`);
-
---
--- Indexes for table `tbkelkecil`
---
-ALTER TABLE `tbkelkecil`
-  ADD PRIMARY KEY (`idKelKecil`);
-
---
--- Indexes for table `tbrundown`
---
-ALTER TABLE `tbrundown`
-  ADD PRIMARY KEY (`idRundown`);
-
---
--- Indexes for table `tbshorten`
---
-ALTER TABLE `tbshorten`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbtugas`
---
-ALTER TABLE `tbtugas`
-  ADD PRIMARY KEY (`idTugas`);
-
---
--- Indexes for table `tbuser`
---
-ALTER TABLE `tbuser`
-  ADD PRIMARY KEY (`idUser`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbinfotugas`
---
-ALTER TABLE `tbinfotugas`
-  MODIFY `id_info` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbkelbesar`
---
-ALTER TABLE `tbkelbesar`
-  MODIFY `idKelBesar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbkelkecil`
---
-ALTER TABLE `tbkelkecil`
-  MODIFY `idKelKecil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbshorten`
---
-ALTER TABLE `tbshorten`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbuser`
---
-ALTER TABLE `tbuser`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -72,7 +72,8 @@ class Admin extends CI_Controller
 	public function tests()
 	{
 		$data = [
-			'title'			=> 'Pretest & Posttest'
+			'title'			=> 'Pretest & Posttest',
+			'lists'			=>	$this->ModelAdmin->getTests()
 		];
 		$this->load->view('Adminpage/Templates/header', $data);
 		$this->load->view('Adminpage/Templates/navbar');
@@ -81,7 +82,20 @@ class Admin extends CI_Controller
 		$this->load->view('Adminpage/Templates/footer');
 	}
 
-	public function tasks()
+	public function editTests($idRundown = "")
+	{
+		$data = [
+			'title'			=> 'Edit Pretest & Posttest',
+			'lists'			=> $this->ModelAdmin->getEditTests($idRundown)
+		];
+		$this->load->view('Adminpage/Templates/header', $data);
+		$this->load->view('Adminpage/Templates/navbar');
+		$this->load->view('Adminpage/Templates/sidebar', $data);
+		$this->load->view('Adminpage/edit_tests');
+		$this->load->view('Adminpage/Templates/footer');
+	}
+
+	public function viewTasks()
 	{
 		$data = [
 			'title'			=> 'Tugas',
@@ -93,4 +107,79 @@ class Admin extends CI_Controller
 		$this->load->view('Adminpage/tugas');
 		$this->load->view('Adminpage/Templates/footer');
 	}
+
+	public function addTasks()
+	{
+		$data = [
+			'title'			=> 'Buat Tugas',
+			'lists'			=> $this->ModelAdmin->getTasksInfo()
+		];
+		$this->load->view('Adminpage/Templates/header', $data);
+		$this->load->view('Adminpage/Templates/navbar');
+		$this->load->view('Adminpage/Templates/sidebar', $data);
+		$this->load->view('Adminpage/add_tasks');
+		$this->load->view('Adminpage/Templates/footer');
+	}
+
+	public function deleteTasks($id_info = "")
+	{
+		$this->ModelAdmin->deleteTasks($id_info);
+		$this->session->set_flashdata('success_deleteTasks', 'Berhasil menghapus tugas!');
+		redirect('Admin/addTasks');
+	}
+
+	public function editTasks($id_info = "")
+	{
+		$data = [
+			'title'			=> 'Edit Tugas',
+			'lists'			=>	$this->ModelAdmin->getTaskInfo($id_info)
+		];
+		$this->load->view('Adminpage/Templates/header', $data);
+		$this->load->view('Adminpage/Templates/navbar');
+		$this->load->view('Adminpage/Templates/sidebar', $data);
+		$this->load->view('Adminpage/edit_tasks');
+		$this->load->view('Adminpage/Templates/footer');
+	}
+
+	public function setTasks($id_info = "")
+	{
+		$nama_tugas = $this->input->post('nama_tugas');
+		$keterangan = $this->input->post('keterangan');
+		$dateUse	= $this->input->post('dateUse');
+		$SubmitForm	= $this->input->post('SubmitForm');
+
+		$this->ModelAdmin->editTasks($id_info, $nama_tugas, $keterangan, $dateUse, $SubmitForm);
+		$this->session->set_flashdata('success_setTasks', 'Berhasil mengedit tugas!');
+		redirect('Admin/addTasks');
+	}
+
+	public function makeTasks($id_info = "")
+	{
+		$data = [
+			'title'			=> 'Buat Tugas',
+		];
+		$this->load->view('Adminpage/Templates/header', $data);
+		$this->load->view('Adminpage/Templates/navbar');
+		$this->load->view('Adminpage/Templates/sidebar', $data);
+		$this->load->view('Adminpage/make_tasks');
+		$this->load->view('Adminpage/Templates/footer');
+	}
+
+	public function setMakeTasks()
+	{
+		$data = [
+			'nama_tugas'	=> $this->input->post('nama_tugas'),
+			'keterangan'	=> $this->input->post('keterangan'),
+			'dateUse'		=> $this->input->post('dateUse'),
+			'SubmitForm'	=> $this->input->post('SubmitForm'),
+			'dateCreate'	=> date("Y-m-d")
+		];
+		$this->ModelAdmin->setMakeTasks($data);
+		$this->session->set_flashdata('success_setMakeTasks', 'Tugas Berhasil Terbuat');
+		redirect('Admin/addTasks');
+	}
+
+	
+
+	
 }

@@ -7,39 +7,50 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Edit Link Zoom dan Presensi</h1>
+          <h1 class="m-0">Buat Tugas!</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?= base_url('Admin'); ?>">Dashboard</a></li>
-            <li class="breadcrumb-item active">Daftar Link</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
+
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">Edit Link Zoom dan Presensi Gerigi</h3>
+          <h3 class="card-title">Buat Tugas Gerigi</h3>
         </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form action="../setLink" method="POST">
+      <form action="./setMakeTasks" method="POST">
         <div class="card-body">
-          <p>Nama Kelompok Besar: <?php echo $lists['namaKelBesar'];?></p>
-          <p>Tanggal: <?php echo $lists['dateUse'];?></p>
-          <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $lists['id']?>">
+          <input type="hidden" class="form-control" id="id_info" name="id_info" required>
           <div class="form-group">
-            <label>Link Zoom</label>
-            <input type="text" class="form-control" id="link_zoom" name="link_zoom" value="<?php echo $lists['link_zoom']?>">
+            <label>Nama Tugas</label>
+            <input type="text" class="form-control" id="nama_tugas" name="nama_tugas" required>
           </div>
           <div class="form-group">
-            <label>Link Presensi</label>
-            <input type="text" class="form-control" id="link_presensi" name="link_presensi" value="<?php echo $lists['link_presensi']?>">
+            <label>Keterangan</label>
+            <textarea class="form-control" id="keterangan" name="keterangan" rows="5" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Tanggal Digunakan:</label>
+              <div class="input-group date">
+                  <input type="date" name="dateUse" id="dateUse" class="form-control datetimepicker-input" required>
+              </div>
+          </div>
+          <div class="form-group">
+            <label>Submit Form: (Ya Jika Membutuhkan Pengumpulan | Tidak Jika Tidak Membutuhkan Pengumpulan)</label>
+              <select class="form-control" name="SubmitForm" id="SubmitForm" required>
+                <option value="ya">Ya</option>
+                <option selected value="tidak">Tidak</option>
+              </select>
           </div>
         </div>
         <!-- /.card-body -->

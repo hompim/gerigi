@@ -34,11 +34,12 @@
             <thead>
               <tr>
                 <th>No</th>
+                <th>Nama Tugas</th>
                 <th>Nama Kelompok Besar</th>
                 <th>Nama Kelompok Kecil</th>
                 <th>Nama Mahasiswa</th>
                 <th>Tanggal Pengumpulan</th>
-                <th>Link</th>
+                <th>Lihat Tugas</th>
               </tr>
             </thead>
             <tbody>
@@ -46,6 +47,7 @@
               <?php foreach ($lists as $list) : ?>
                 <tr>
                   <td class="text-center"><?= $i++; ?></td>
+                  <td><?= $list['nama_tugas']; ?></td>
                   <td><?= $list['namaKelBesar']; ?></td>
                   <td><?= $list['namaKelKecil']; ?></td>
                   <td><?= $list['nama']; ?></td>
@@ -59,6 +61,7 @@
             <tfoot>
               <tr>
                 <th>No</th>
+                <th>Nama Tugas</th>
                 <th>Nama Kelompok Besar</th>
                 <th>Nama Kelompok Kecil</th>
                 <th>Nama Mahasiswa</th>

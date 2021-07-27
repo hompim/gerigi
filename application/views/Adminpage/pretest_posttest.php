@@ -23,9 +23,56 @@
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
-
-
-
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Daftar Link Zoom dan Presensi Gerigi</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="datatables" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Nama Acara</th>
+                <th>Jam</th>
+                <th>Edit Acara</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php $i = 1 ?>
+              <?php foreach ($lists as $list) : ?>
+                <tr>
+                  <td class="text-center"><?= $i++; ?></td>
+                  <td><?= $list['dateUse']; ?></td>
+                  <td><?= $list['nama']; ?></td>
+                  <td><?= $list['jam']; ?></td>
+                  <?php if ($list['hasLink'] == "Ya"):?>
+                  <td>
+                    <a href="./editTests/<?php echo $list['idRundown']?>" class="btn btn-primary btn-sm">
+                    Edit Acara
+                    </a>
+                  </td>
+                  <?php else: ?>
+                    <td><a>Tidak ada Link</a></td>
+                  <?php endif;?>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Nama Acara</th>
+                <th>Jam</th>
+                <th>Edit Acara</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->

@@ -68,13 +68,24 @@
 
         <!-- Tugas Menu -->
         <li class="nav-item">
-          <a href="<?= base_url('Admin/tasks'); ?>" class="nav-link <?= $title == 'Tugas' ? 'active' : ''; ?>">
+          <a href="<?= base_url('Admin/viewTasks'); ?>" class="nav-link <?= $title == 'Tugas' ? 'active' : ''; ?>">
             <i class="nav-icon fas fa-tasks"></i>
             <p>
               Tugas
             </p>
           </a>
         </li>
+
+        <!-- Buat Tugas Menu -->
+        <li class="nav-item">
+        <a href="<?= base_url('Admin/addTasks'); ?>" class="nav-link <?= $title == 'Buat Tugas' ? 'active' : ''; ?>">
+          <i class="nav-icon fas fa-tasks"></i>
+          <p>
+            Buat Tugas
+          </p>
+        </a>
+      </li>
+
 
       </ul>
     </nav>
