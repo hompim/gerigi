@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="icon" href="<?=base_url('assets/Dashboard-mahasiswa/') ?>img/Green.png">
+    <link rel="icon" href="<?php echo base_url() ?>assets/img/LogoGerigi.png">
     <link rel="stylesheet" href="<?=base_url('assets/Dashboard-mahasiswa/') ?>css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?=base_url('assets/Dashboard-mahasiswa/') ?>css/style.css" />
     <link rel="stylesheet" href="<?=base_url('assets/Dashboard-mahasiswa/') ?>css/fontawesome/css/fontawesome-all.min.css" />
@@ -20,11 +20,11 @@
     <!-- navbar section start -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand m-3" href="#"><img src="<?=base_url('assets/Dashboard-mahasiswa/') ?>img/Component 1 – 1.svg" alt="" class="mx-2"> GERIGI 2021</a>
+          <a class="navbar-brand m-3" href="#"><img src="<?=base_url('assets/') ?>img/LogoGerigi.svg" alt="" class="mx-2" height="75"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="#rundown">Rundown</a>
@@ -41,46 +41,58 @@
 
       <!-- intro section start -->
       <div class="intro">
-          <div class="container">
-            <div class="row">
-                <div class="col">
-                        <h1>Selamat datang,<!-- di GERIGI day <span class="nmr-hari">0</span>,--><br><span class="nama"><?=$this->session->userdata('nama'); ?></span></h1>
-                        <h2>Kamu berada di kelompok besar <span class="nmr-kelompok"><?=$klmpkbesar['namaKelBesar'] ?></span><br> Kelompok kecil <span class="nmr-kelompok"><?=$klmpkkecil['namaKelKecil'] ?></span><button type="button" class="btn ms-1 rounded-circle" data-bs-toggle="modal" data-bs-target="#anggota-kelompok"  title="Anggota kelompok">
-                          <i class="fa fa-users" aria-hidden="true"></i>
-                        </button>
-                        <br>
-                        GERIGI hari ke - <span class="nmr-hari">
-                          <?php if (date('Y-m-d')=='2021-08-13') {
-                            echo "1";
-                          }elseif (date('Y-m-d')=='2021-08-14') {
-                            echo "2";
-                          }elseif (date('Y-m-d')=='2021-08-15') {
-                            echo "3";
-                          }else{
-                            echo "0";
-                          } ?></span></h2>
-                        <a href="<?php if ($link==NULL) {
-                          echo "#";
-                        }else{
-                          echo $link['link_zoom'];
-                        } ?>" <?php if ($link==NULL) {
-                          echo "";
-                        }else{ ?>
-                          target="_blank";
-                        <?php } ?> class="zoom btn mx-2"><img src="<?=base_url('assets/Dashboard-mahasiswa/') ?>img/NicePng_youtube-icon-png_10087079.svg" alt="" class="img-zoom"> Link Zoom</a>
-                        <a href="<?php if ($link==NULL) {
-                          echo "#";
-                        }else{
-                          echo $link['link_presensi'];
-                        } ?>" <?php if ($link==NULL) {
-                          echo "";
-                        }else{ ?>
-                          target="_blank";
-                        <?php } ?> class="presensi btn mx-2">Presensi</a>
-                    </div>
-                </div>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1>Selamat datang,<!-- di GERIGI day <span class="nmr-hari">0</span>,--><br><span class="nama"><?=$this->session->userdata('nama'); ?></span></h1>
+              <h2>Kamu berada di 
+                Distrik <span class="nmr-kelompok"><?=$klmpkbesar['namaKelBesar'] ?></span>,
+                Zona <span class="nmr-kelompok"><?=$klmpkkecil['namaKelKecil'] ?></span>
+                <button type="button" class="btn ms-1 rounded-circle" data-bs-toggle="modal" data-bs-target="#anggota-kelompok"  title="Anggota kelompok">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                </button><br>
+                GERIGI hari ke - <span class="nmr-hari">
+                  <?php if (date('Y-m-d')=='2021-08-13') {
+                    echo "1";
+                  }elseif (date('Y-m-d')=='2021-08-14') {
+                    echo "2";
+                  }elseif (date('Y-m-d')=='2021-08-15') {
+                    echo "3";
+                  }else{
+                    echo "0";
+                  } ?></span>
+                </h2>
+                <a href="
+                <?php if ($link==NULL) {
+                    echo "#";
+                  }else{
+                    echo $link['link_zoom'];
+                  } ?>"
+                  <?php if ($link==NULL) {
+                    echo "";
+                  }else{ ?>
+                    target="_blank";
+                  <?php } ?>
+                  class="zoom btn mx-2">
+                  <img src="<?=base_url('assets/Dashboard-mahasiswa/') ?>img/NicePng_youtube-icon-png_10087079.svg" alt="" class="img-zoom"> Link Zoom
+                </a>
+                <a href="
+                <?php if ($link==NULL) {
+                    echo "#";
+                  }else{
+                    echo $link['link_presensi'];
+                  } ?>"
+                  <?php if ($link==NULL) {
+                    echo "";
+                  }else{ ?>
+                    target="_blank";
+                  <?php } ?> 
+                  class="presensi btn mx-2">Presensi
+                </a>
+              </div>
             </div>
-      </div>
+          </div>
+        </div>
 
       <!-- modal section start -->
       <div class="modal fade" id="anggota-kelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -138,36 +150,50 @@
                         <col span="1" style="width: 35%;">
                      </colgroup>
                      <tbody>
-                         <tr>
-                             <th>No</th>
-                             <th>Acara</th>
-                             <th>Jam</th>
-                             <th>Link</th>
-                         </tr>
-                         <?php
-                         if ($rundown == NULL) { ?>
+                       <tr>
+                         <th>No</th>
+                         <th>Acara</th>
+                         <th>Jam</th>
+                         <th>Link</th>
+                       </tr>
+                       <?php
+                       if ($rundown == NULL) { ?>
                          <tr style="background-color: white;">
-                             <td colspan="4">-</td>
+                           <td colspan="4">-</td>
                          </tr>
-                          <?php } 
-                         $no=1;
-                         foreach ($rundown as $data) { ?>  
+                       <?php } 
+                       $no=1;
+                       foreach ($rundown as $data) { ?>  
                          <tr style="background-color: white;">
-                             <td><?=$no++ ?></td>
-                             <td><?=$data['nama'] ?></td>
-                             <td><?=$data['jam'] ?></td>
-                             <td><?php if ($data['hasLink']=='Tidak') {
-                               echo "-";
-                             }else{ ?>
-                               <a target="_blank" href="<?=base_url('Mahasiswa/get_link/').$data['idRundown'] ?>" class="link-test btn">Link <?=$data['nama'] ?></a>
-                             <?php } ?></td>
-                         </tr>
-                         <?php } ?>
-                     </tbody>
-                  </table>
+                           <td><?=$no++ ?></td>
+                           <td><?=$data['nama'] ?></td>
+                           <td><?=$data['jam'] ?></td>
+                           <td><?php if ($data['hasLink']=='Tidak') {
+                             echo "-";
+                           }else{ ?>
+                             <a target="_blank" href="<?=base_url('Mahasiswa/get_link/').$data['idRundown'] ?>" class="link-test btn">Link 
+                              <?php 
+                              if (strpos(strtoupper($data['nama']), strtoupper('Pretest')) !== false) {
+                                echo "Pretest";
+                              }
+                              if (strpos(strtoupper($data['nama']), strtoupper('Postest')) !== false) {
+                                echo 'Postest';
+                              }
+                              if (strpos(strtoupper($data['nama']), strtoupper('Materi')) !== false) {
+                                echo 'Feedback';
+                              }
+                              ?>
+
+                            </a>
+                            <?php } ?></td>
+                          </tr>
+                        <?php } ?>
+                      </tbody>
+                    </table>
                   <div class="row text-center">
                       <h1 class="my-5">Info Penugasan</h1>
                   </div>
+                  <div class="row text-center justify-content-center">
                   <table style="width: 88%;" class="table table-striped">
                     <colgroup>
                         <col span="1" style="width: 5%;">
@@ -180,7 +206,7 @@
                              <th>No</th>
                              <th>Nama</th>
                              <th>Keterangan</th>
-                             <th>Link Pengumpulan</th>
+                             <th>Link Submit</th>
                          </tr>
                          <?php
                          if ($info_tugas == NULL) { ?>
@@ -190,20 +216,21 @@
                           <?php } 
                          $no=1;
                          foreach ($info_tugas as $data) { ?>  
-                         <tr style="background-color: white;">
+                         <tr class="text-start" style="background-color: white;">
                              <td><?=$no++ ?></td>
                              <td><?=$data['nama_tugas'] ?></td>
                              <td><?=$data['keterangan'] ?></td>
-                             <td><?php if ($data['SubmitForm']=='tidak' OR $data['SubmitForm']=='Tidak') {
-                               echo "sudah diupload";
-                             }else{ ?>
-                               <a href="<?=base_url('Mahasiswa/upload_link/').$data['id_info'] ?>" class="link-test btn">Upload Link</a>
+                             <td class="text-center"><?php if ($data['SubmitForm']=='tidak' OR $data['SubmitForm']=='Tidak') {
+                               echo "-";
+                             }else if ($data['SubmitForm']=='ya' OR $data['SubmitForm']=='Ya') { ?>
+                               <a  href="<?=base_url('Mahasiswa/upload_link/').$data['id_info'] ?>" class="link-test btn">Submit Tugas</a>
                              <?php } ?></td>
                          </tr>
                          <?php } ?>
                      </tbody>
                   </table>
             </div>
+          </div>
         </div>
       </div>
 
@@ -214,8 +241,7 @@
           <div class="row">
             <div class="col col-md-3 my-5 text-center text-md-start">
               <a href="#" class="logo-footer">
-                <img src="<?=base_url('assets/Dashboard-mahasiswa/') ?>img/Component 1 – 1.svg" alt="" class="my-5">
-                GERIGI 2021
+                <img src="<?=base_url('assets/') ?>img/LogoGerigi.svg" alt="" class="my-4" height="75">
               </a>
             </div>
             <div class="col-12 col-md-6 my-5 text-center text-md-start">

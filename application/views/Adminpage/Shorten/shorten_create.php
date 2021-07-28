@@ -45,7 +45,7 @@
                   <label for="shorten">Alamat Shorten Link</label>
                   <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">gerigi.its.ac.id/</span>
+                      <span class="input-group-text"><?php echo base_url(); ?></span>
                     </div>
                     <input type="text" class="form-control" id="shorten" name="shorten" placeholder="Masukkan alamat link pendek" value="<?= set_value('shorten'); ?>">
                   </div>

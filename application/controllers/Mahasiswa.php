@@ -48,6 +48,7 @@ class Mahasiswa extends CI_Controller {
 		if ($this->form_validation->run() == FALSE) {
 			$data['title'] = 'Upload Tugasmu';
 			$data['id'] = $id;
+			$data['cekTugas'] = $this->db->get_where('tbtugas',['idInfoTugas' => $id, 'idUser' => $this->session->userdata('id')])->num_rows();
 			$this->load->view('Dashboard-mahasiswa-main/upload-tugas', $data);
 		} else {
 			$data = [
@@ -61,9 +62,7 @@ class Mahasiswa extends CI_Controller {
 			];
 
 			if ($this->db->insert('tbtugas', $data)==TRUE) {
-				if ($this->db->query("UPDATE tbinfotugas SET SubmitForm='tidak' WHERE id_info='$id'")==TRUE) {
-					redirect('Mahasiswa');
-				}
+				redirect('Mahasiswa');
 			}
 		}
 	}

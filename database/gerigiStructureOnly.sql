@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2021 at 12:06 PM
+-- Generation Time: Jul 28, 2021 at 11:56 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -59,9 +59,9 @@ CREATE TABLE `linkrundown` (
 
 CREATE TABLE `tbinfotugas` (
   `id_info` int(11) NOT NULL,
-  `nama` varchar(256) NOT NULL,
+  `nama_tugas` varchar(256) NOT NULL,
   `keterangan` varchar(512) NOT NULL,
-  `SubmitFrorm` text NOT NULL DEFAULT 'tidak',
+  `SubmitForm` text NOT NULL,
   `dateUse` date NOT NULL,
   `dateCreate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -137,7 +137,8 @@ CREATE TABLE `tbtugas` (
   `idKelBesar` int(11) NOT NULL,
   `idKelKecil` int(11) NOT NULL,
   `link` varchar(256) NOT NULL,
-  `dateCreate` date NOT NULL
+  `dateCreate` date NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -221,6 +222,18 @@ ALTER TABLE `tbuser`
 --
 
 --
+-- AUTO_INCREMENT for table `link`
+--
+ALTER TABLE `link`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `linkrundown`
+--
+ALTER TABLE `linkrundown`
+  MODIFY `idTest` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbinfotugas`
 --
 ALTER TABLE `tbinfotugas`
@@ -239,10 +252,22 @@ ALTER TABLE `tbkelkecil`
   MODIFY `idKelKecil` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tbrundown`
+--
+ALTER TABLE `tbrundown`
+  MODIFY `idRundown` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbshorten`
 --
 ALTER TABLE `tbshorten`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbtugas`
+--
+ALTER TABLE `tbtugas`
+  MODIFY `idTugas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbuser`

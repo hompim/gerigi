@@ -51,7 +51,7 @@
                   <td><?= $list['name']; ?></td>
                   <td class="text-nowrap">
                     <a href="<?= base_url('') . $list['shorten']; ?>" target="_blank">
-                      gerigi.its.ac.id/<?= $list['shorten']; ?>
+                      <?= base_url($list['shorten']); ?>
                     </a>
                   </td class="text-wrap">
                   <td>

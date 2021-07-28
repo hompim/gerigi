@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2021 at 08:53 AM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.8
+-- Generation Time: Jul 28, 2021 at 11:56 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -66,7 +65,11 @@ CREATE TABLE `linkrundown` (
 
 INSERT INTO `linkrundown` (`idTest`, `idRundown`, `link`, `idKelBesar`, `dateUse`, `dateCreate`) VALUES
 (1, 2, 'https://intip.in/pretest', 1, '2021-07-24', '2021-07-23'),
-(2, 4, 'https://intip.in/postest', 1, '2021-07-24', '2021-07-23');
+(2, 3, 'https://intip.in/feedback', 1, '2021-07-29', '2021-07-29'),
+(3, 4, 'https://intip.in/postest', 1, '2021-07-24', '2021-07-23'),
+(4, 2, 'test1', 2, '2021-07-29', '2021-07-29'),
+(5, 3, 'test2', 2, '2021-07-29', '2021-07-29'),
+(6, 4, 'test3', 2, '2021-07-29', '2021-07-29');
 
 -- --------------------------------------------------------
 
@@ -88,7 +91,7 @@ CREATE TABLE `tbinfotugas` (
 --
 
 INSERT INTO `tbinfotugas` (`id_info`, `nama_tugas`, `keterangan`, `SubmitForm`, `dateUse`, `dateCreate`) VALUES
-(1, 'Penugasan Pra-gerigi 1', 'melakukan cover dance jingle gerigi seperti pada contoh <a href=\"https://google.com\">berikut.</a><br>di upload paling lambat hari ke 3 pelaksanaan gerigi pada instagram masing-masing dengan caption ini itu sebagainya dan hastag kaya gini serta profile instagram publik', 'tidak', '2021-07-28', '2021-07-25'),
+(1, 'Penugasan Pra-gerigi 1', 'melakukan cover dance jingle gerigi seperti pada contoh <a href=\"https://google.com\">berikut.</a><br>di upload paling lambat hari ke 3 pelaksanaan gerigi pada instagram masing-masing dengan caption ini itu sebagainya dan hastag kaya gini serta profile instagram publik', 'ya', '2021-07-28', '2021-07-25'),
 (2, 'tugas gerigi day-2', 'membuat vidio tentang kontribusi yang akan di berikan untuk ITS', 'tidak', '2021-07-28', '2021-07-25');
 
 -- --------------------------------------------------------
@@ -110,7 +113,8 @@ CREATE TABLE `tbkelbesar` (
 --
 
 INSERT INTO `tbkelbesar` (`idKelBesar`, `namaKelBesar`, `namaPicKelBesar`, `cpPicKelBesar`, `dateCreate`) VALUES
-(1, 'Covid', 'Hendry', 'Hendry', '2021-07-22 17:33:34');
+(1, 'Covid', 'Hendry', 'Hendry', '2021-07-22 17:33:34'),
+(2, 'Kendaraan', 'Daffa', 'Daffa', '2021-07-28 23:11:40');
 
 -- --------------------------------------------------------
 
@@ -154,10 +158,10 @@ CREATE TABLE `tbrundown` (
 --
 
 INSERT INTO `tbrundown` (`idRundown`, `nama`, `jam`, `hasLink`, `dateUse`, `dateCreate`) VALUES
-(1, 'Pembukaan', '09:00:00', 'Tidak', '2021-07-27', '2021-07-23'),
-(2, 'Pretest', '09:15:00', 'Ya', '2021-07-27', '2021-07-23'),
-(3, 'Materi', '09:30:00', 'Tidak', '2021-07-27', '2021-07-23'),
-(4, 'Postest', '10:30:00', 'Ya', '2021-07-27', '2021-07-23');
+(1, 'Pembukaan', '09:00:00', 'Tidak', '2021-07-29', '2021-07-23'),
+(2, 'Pretest', '09:15:00', 'Ya', '2021-07-29', '2021-07-23'),
+(3, 'Materi', '09:30:00', 'Ya', '2021-07-29', '2021-07-23'),
+(4, 'Postest', '10:30:00', 'Ya', '2021-07-29', '2021-07-23');
 
 -- --------------------------------------------------------
 
@@ -195,8 +199,15 @@ CREATE TABLE `tbtugas` (
   `idKelKecil` int(11) NOT NULL,
   `link` varchar(256) NOT NULL,
   `dateCreate` date NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbtugas`
+--
+
+INSERT INTO `tbtugas` (`idTugas`, `idInfoTugas`, `idUser`, `idKelBesar`, `idKelKecil`, `link`, `dateCreate`, `timestamp`) VALUES
+(5, 1, 1, 1, 1, 'https://cok.com', '2021-07-29', '2021-07-28 19:19:33');
 
 -- --------------------------------------------------------
 
@@ -212,7 +223,7 @@ CREATE TABLE `tbuser` (
   `idKelBesar` int(11) NOT NULL,
   `idKelKecil` int(11) NOT NULL,
   `role` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   `dateUpdate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -288,6 +299,18 @@ ALTER TABLE `tbuser`
 --
 
 --
+-- AUTO_INCREMENT for table `link`
+--
+ALTER TABLE `link`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `linkrundown`
+--
+ALTER TABLE `linkrundown`
+  MODIFY `idTest` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `tbinfotugas`
 --
 ALTER TABLE `tbinfotugas`
@@ -297,13 +320,19 @@ ALTER TABLE `tbinfotugas`
 -- AUTO_INCREMENT for table `tbkelbesar`
 --
 ALTER TABLE `tbkelbesar`
-  MODIFY `idKelBesar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idKelBesar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbkelkecil`
 --
 ALTER TABLE `tbkelkecil`
   MODIFY `idKelKecil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbrundown`
+--
+ALTER TABLE `tbrundown`
+  MODIFY `idRundown` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbshorten`
@@ -315,7 +344,7 @@ ALTER TABLE `tbshorten`
 -- AUTO_INCREMENT for table `tbtugas`
 --
 ALTER TABLE `tbtugas`
-  MODIFY `idTugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idTugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbuser`

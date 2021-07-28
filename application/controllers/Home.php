@@ -85,7 +85,9 @@ class Home extends CI_Controller
 					redirect('Mahasiswa');
 				}
 			} else {
-				print('username atau password anda salah');
+				echo "<script>alert('username atau password anda salah');window.location.href = '../home';</script>";
+				// redirect('home');
+				// print('username atau password anda salah');
 			}
 		}
 	}
