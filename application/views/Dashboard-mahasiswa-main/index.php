@@ -180,7 +180,7 @@
                              <th>No</th>
                              <th>Nama</th>
                              <th>Keterangan</th>
-                             <!-- <th>Link</th> -->
+                             <th>Link Pengumpulan</th>
                          </tr>
                          <?php
                          if ($info_tugas == NULL) { ?>
@@ -192,13 +192,13 @@
                          foreach ($info_tugas as $data) { ?>  
                          <tr style="background-color: white;">
                              <td><?=$no++ ?></td>
-                             <td><?=$data['nama'] ?></td>
+                             <td><?=$data['nama_tugas'] ?></td>
                              <td><?=$data['keterangan'] ?></td>
-                             <!-- <td><?php if ($data['hasLink']=='Tidak') {
-                               echo "-";
+                             <td><?php if ($data['SubmitForm']=='tidak' OR $data['SubmitForm']=='Tidak') {
+                               echo "sudah diupload";
                              }else{ ?>
-                               <a target="_blank" href="<?=base_url('Mahasiswa/get_link/').$data['idRundown'] ?>" class="link-test btn">Link <?=$data['nama'] ?></a>
-                             <?php } ?></td> -->
+                               <a href="<?=base_url('Mahasiswa/upload_link/').$data['id_info'] ?>" class="link-test btn">Upload Link</a>
+                             <?php } ?></td>
                          </tr>
                          <?php } ?>
                      </tbody>

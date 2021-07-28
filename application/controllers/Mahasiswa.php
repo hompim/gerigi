@@ -41,6 +41,33 @@ class Mahasiswa extends CI_Controller {
 		$this->load->view('Dashboard-mahasiswa-main/index', $data);
 	}
 
+	public function upload_link($id)
+	{
+		$this->form_validation->set_rules('link', 'Link', 'trim|required', ['required' => 'Kamu Belum Mengisi Link!']);
+
+		if ($this->form_validation->run() == FALSE) {
+			$data['title'] = 'Upload Tugasmu';
+			$data['id'] = $id;
+			$this->load->view('Dashboard-mahasiswa-main/upload-tugas', $data);
+		} else {
+			$data = [
+				'idInfoTugas' 	=> $id,
+				'idUser'		=> $this->session->userdata('id'),
+				'idKelBesar'	=> $this->session->userdata('idKelBesar'),
+				'idKelKecil'	=> $this->session->userdata('idKelKecil'),
+				'link'			=> $this->input->post('link'),
+				'dateCreate'	=> date('Y-m-d'),
+				'timestamp'		=> date('Y-m-d h:i:sa')
+			];
+
+			if ($this->db->insert('tbtugas', $data)==TRUE) {
+				if ($this->db->query("UPDATE tbinfotugas SET SubmitForm='tidak' WHERE id_info='$id'")==TRUE) {
+					redirect('Mahasiswa');
+				}
+			}
+		}
+	}
+
 	public function get_link($idRd)
 	{
 		$link = $this->db->get_where('linkrundown', ['idRundown' => $idRd])->row_array();
