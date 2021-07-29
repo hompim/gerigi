@@ -84,4 +84,18 @@ class ModelAdmin extends CI_Model
 		$this->db->where('linkrundown.idRundown', $idRundown);
 		return $this->db->get()->result_array();
 	}
+
+	function getLinkTests($idTest)
+	{
+		$this->db->select('linkrundown.*, tbkelbesar.namaKelBesar');
+		$this->db->join('tbkelbesar', 'tbkelbesar.idKelBesar = linkrundown.idKelBesar');
+		return $this->db->get_where('linkrundown', ['idTest' => $idTest])->row_array();
+	}
+
+	function setLinkTests($idTest, $link)
+	{
+		$this->db->set('link', $link);
+		$this->db->where('idTest', $idTest);
+		$this->db->update('linkrundown');
+	}
 }
