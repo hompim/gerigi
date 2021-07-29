@@ -63,7 +63,7 @@ class Home extends CI_Controller
 				'username' => $username,
 				'userPass' => md5($password)
 			);
-			$cek = $this->ModelLogin->getWhere("tbUser", $where);
+			$cek = $this->ModelLogin->getWhere("tbuser", $where);
 			$rows = $cek->num_rows();
 			if ($rows > 0) {
 				$cek = $cek->row_array();
@@ -97,7 +97,7 @@ class Home extends CI_Controller
 		if ($this->session->userdata('status') != "login") {
 			redirect('Home');
 		} else {
-			$this->load->view('Homepage/changePass');
+			$this->load->view('Homepage/ChangePass');
 		}
 	}
 
@@ -115,7 +115,7 @@ class Home extends CI_Controller
 			'idUser' => $idUser
 		);
 
-		$this->ModelLogin->updatePass($where, $data, 'tbUser');
+		$this->ModelLogin->updatePass($where, $data, 'tbuser');
 		$this->session->set_userdata('statusPwd', 1);
 		redirect('Home');
 	}

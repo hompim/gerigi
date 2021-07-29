@@ -88,7 +88,9 @@
                     target="_blank";
                   <?php } ?> 
                   class="presensi btn mx-2">Presensi
-                </a>
+                </a><br>
+                <a href="https://drive.google.com/drive/folders/10J-I581exrWMmluUrqMPXksICanUNizN?usp=sharing" class="zoom btn mx-2" target="_blank">Download VBG</a>
+                <a href="https://docs.google.com" class="presensi btn mx-2" target="_blank">Tata Tertib</a>
               </div>
             </div>
           </div>
@@ -206,7 +208,6 @@
                              <th>No</th>
                              <th>Nama</th>
                              <th>Keterangan</th>
-                             <th>Link Submit</th>
                          </tr>
                          <?php
                          if ($info_tugas == NULL) { ?>
@@ -220,11 +221,6 @@
                              <td><?=$no++ ?></td>
                              <td><?=$data['nama_tugas'] ?></td>
                              <td><?=$data['keterangan'] ?></td>
-                             <td class="text-center"><?php if ($data['SubmitForm']=='tidak' OR $data['SubmitForm']=='Tidak') {
-                               echo "-";
-                             }else if ($data['SubmitForm']=='ya' OR $data['SubmitForm']=='Ya') { ?>
-                               <a  href="<?=base_url('Mahasiswa/upload_link/').$data['id_info'] ?>" class="link-test btn">Submit Tugas</a>
-                             <?php } ?></td>
                          </tr>
                          <?php } ?>
                      </tbody>
