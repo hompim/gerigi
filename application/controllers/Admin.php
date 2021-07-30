@@ -95,6 +95,32 @@ class Admin extends CI_Controller
 		$this->load->view('Adminpage/Templates/footer');
 	}
 
+	public function editLinkTests($idTest = "")
+	{
+		$data = [
+			'title' =>	'Edit Link Pretest & Posttest',
+			'lists'	=>	$this->ModelAdmin->getLinkTests($idTest)
+		];
+
+		$this->load->view('Adminpage/Templates/header', $data);
+		$this->load->view('Adminpage/Templates/navbar');
+		$this->load->view('Adminpage/Templates/sidebar', $data);
+		$this->load->view('Adminpage/edit_link_tests');
+		$this->load->view('Adminpage/Templates/footer');
+	}
+
+	public function setLinkTests()
+	{
+		$idRundown 	= $this->input->post('idRundown');
+		$link		= $this->input->post('link');
+		$idTest		= $this->input->post('idTest');
+
+		$this->ModelAdmin->setLinkTests($idTest, $link);
+		$this->session->set_flashdata('success_setLinkTests', 'Berhasil mengedit link!');
+		$url	= "Admin/editTests/$idRundown";
+		redirect($url);
+	}
+
 	public function viewTasks()
 	{
 		$data = [
