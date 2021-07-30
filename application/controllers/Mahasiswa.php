@@ -29,14 +29,16 @@ class Mahasiswa extends CI_Controller {
 
 	public function index()
 	{
+		$idKelBesar = $this->session->userdata('idKelBesar');
+		$dateUse = date('Y-m-d');
 		$data['klmpkkecil'] = $this->db->get_where('tbkelkecil',['idKelKecil' => $this->session->userdata('idKelKecil')])->row_array();
 		$data['klmpkbesar'] = $this->db->get_where('tbkelbesar',['idKelBesar' => $this->session->userdata('idKelBesar')])->row_array();
 		$idKelKecil = $this->session->userdata('idKelKecil');
 		$data['temankelompok'] = $this->db->query("SELECT * FROM tbuser WHERE idKelKecil='$idKelKecil' ORDER BY nama ASC")->result_array();
-		$data['rundown'] = $this->db->get_where('tbrundown', ['dateUse' => date('Y-m-d')])->result_array();
-		$idKelBesar = $this->session->userdata('idKelBesar');
-		$dateUse = date('Y-m-d');
+		// $data['rundown'] = $this->db->get_where('tbrundown', ['dateUse' => date('Y-m-d')])->result_array();
+		$data['rundown'] = $this->db->query("SELECT tbrundown.*, linkrundown.link as linkRundown FROM tbrundown, linkrundown WHERE tbrundown.idRundown = linkrundown.idRundown AND linkrundown.idKelBesar = '$idKelBesar'")->result_array();
 		$data['link'] = $this->db->query("SELECT * FROM link WHERE id_kls_bsr='$idKelBesar' AND dateUse='$dateUse'")->row_array();
+		$data['linkrundown'] = $this->db->query("SELECT * FROM linkrundown WHERE idKelBesar='$idKelBesar' AND dateUse = '$dateUse'")->row_array();
 		$data['info_tugas'] = $this->db->get_where('tbinfotugas', ['dateUse <=' => date('Y-m-d')])->result_array();
 		$this->load->view('Dashboard-mahasiswa-main/index', $data);
 	}

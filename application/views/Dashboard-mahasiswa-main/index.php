@@ -173,16 +173,20 @@
                            <td><?php if ($data['hasLink']=='Tidak') {
                              echo "-";
                            }else{ ?>
-                             <a target="_blank" href="<?=base_url('Mahasiswa/get_link/').$data['idRundown'] ?>" class="link-test btn">Link 
+                             <a href="<?=$data['linkRundown'] ?>"
+                              <?php if ($data['linkRundown'] != "#") {
+                                echo "target='_blank'";
+                              } ?>
+                              class="link-test btn">Link 
                               <?php 
                               if (strpos(strtoupper($data['nama']), strtoupper('Pretest')) !== false) {
                                 echo "Pretest";
                               }
                               if (strpos(strtoupper($data['nama']), strtoupper('Postest')) !== false) {
-                                echo 'Postest';
+                                echo "Postest";
                               }
                               if (strpos(strtoupper($data['nama']), strtoupper('Materi')) !== false) {
-                                echo 'Feedback';
+                                echo "Feedback";
                               }
                               ?>
 
@@ -237,7 +241,7 @@
           <div class="row">
             <div class="col col-md-3 my-5 text-center text-md-start">
               <a href="#" class="logo-footer">
-                <img src="<?=base_url('assets/') ?>img/LogoGerigi.svg" alt="" class="my-4" height="75">
+                <img src="<?=base_url('assets/') ?>img/LogoGerigiPutih.svg" alt="" class="my-4" height="75">
               </a>
             </div>
             <div class="col-12 col-md-6 my-5 text-center text-md-start">
@@ -247,7 +251,11 @@
             <div class="col col-md-3 text-center text-md-end my-5">
               <h2>Find us</h2>
               <a href="https://www.instagram.com/gerigiits/" class="icon mx-2" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+              <a href="https://lin.ee/9RzWujK" class="icon mx-2" target="_blank"><i class="fab fa-line" aria-hidden="true"></i></a>
+              <a href="https://twitter.com/ItsGerigi" class="icon mx-2" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
               <a href="https://www.youtube.com/c/GerigiITS/featured" class="icon mx-2" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+              <a href="https://www.tiktok.com/@gerigiits" class="icon mx-2" target="_blank"><i class="fab fa-tiktok" aria-hidden="true"></i></a>
+              <a href="https://www.linkedin.com/company/gerigi-its-2021/" class="icon mx-2" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
