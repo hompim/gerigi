@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Edit Link Pretest, Posttest, & Feedback</h1>
+          <h1 class="m-0">Edit Link Interaksi & Feedback</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?= base_url('Admin'); ?>">Dashboard</a></li>
-            <li class="breadcrumb-item active">Edit Link Pretest, Posttest, & Feedback</li>
+            <li class="breadcrumb-item active">Edit Link Interaksi & Feedback</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -24,7 +24,7 @@
     <div class="container-fluid">
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">Edit Link Pretest, Posttest, & Feedback Gerigi</h3>
+          <h3 class="card-title">Edit Link Interaksi & Feedback Gerigi</h3>
         </div>
       <!-- /.card-header -->
       <!-- form start -->

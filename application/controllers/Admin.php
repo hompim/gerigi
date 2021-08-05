@@ -6,6 +6,9 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if ($this->session->userdata('status')!='login') {
+			redirect();
+		}
 		$this->load->model('ModelAdmin');
 		date_default_timezone_set("Asia/Jakarta");
 	}
@@ -72,7 +75,7 @@ class Admin extends CI_Controller
 	public function tests()
 	{
 		$data = [
-			'title'			=> 'Pretest & Posttest',
+			'title'			=> 'Interaksi & Feedback',
 			'lists'			=>	$this->ModelAdmin->getTests()
 		];
 		$this->load->view('Adminpage/Templates/header', $data);
@@ -85,7 +88,7 @@ class Admin extends CI_Controller
 	public function editTests($idRundown = "")
 	{
 		$data = [
-			'title'			=> 'Edit Pretest & Posttest',
+			'title'			=> 'Edit Interaksi & Feedback',
 			'lists'			=> $this->ModelAdmin->getEditTests($idRundown)
 		];
 		$this->load->view('Adminpage/Templates/header', $data);
@@ -98,7 +101,7 @@ class Admin extends CI_Controller
 	public function editLinkTests($idTest = "")
 	{
 		$data = [
-			'title' =>	'Edit Link Pretest & Posttest',
+			'title' =>	'Edit Link Interaksi & Feedback',
 			'lists'	=>	$this->ModelAdmin->getLinkTests($idTest)
 		];
 

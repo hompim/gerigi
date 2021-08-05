@@ -185,6 +185,9 @@
                               if (strpos(strtoupper($data['nama']), strtoupper('Postest')) !== false) {
                                 echo "Postest";
                               }
+                              if (strpos(strtoupper($data['nama']), strtoupper('Interaksi')) !== false) {
+                                echo "Interaksi";
+                              }
                               if (strpos(strtoupper($data['nama']), strtoupper('Materi')) !== false) {
                                 echo "Feedback";
                               }

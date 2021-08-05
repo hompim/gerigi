@@ -36,7 +36,7 @@ class Mahasiswa extends CI_Controller {
 		$idKelKecil = $this->session->userdata('idKelKecil');
 		$data['temankelompok'] = $this->db->query("SELECT * FROM tbuser WHERE idKelKecil='$idKelKecil' ORDER BY nama ASC")->result_array();
 		// $data['rundown'] = $this->db->get_where('tbrundown', ['dateUse' => date('Y-m-d')])->result_array();
-		$data['rundown'] = $this->db->query("SELECT tbrundown.*, linkrundown.link as linkRundown FROM tbrundown, linkrundown WHERE tbrundown.idRundown = linkrundown.idRundown AND linkrundown.idKelBesar = '$idKelBesar'")->result_array();
+		$data['rundown'] = $this->db->query("SELECT tbrundown.*, linkrundown.link as linkRundown FROM tbrundown LEFT JOIN linkrundown ON tbrundown.idRundown = linkrundown.idRundown AND linkrundown.idKelBesar = '$idKelBesar' WHERE tbrundown.dateUse='2021-08-14' ORDER BY idRundown")->result_array();
 		$data['link'] = $this->db->query("SELECT * FROM link WHERE id_kls_bsr='$idKelBesar' AND dateUse='$dateUse'")->row_array();
 		$data['linkrundown'] = $this->db->query("SELECT * FROM linkrundown WHERE idKelBesar='$idKelBesar' AND dateUse = '$dateUse'")->row_array();
 		$data['info_tugas'] = $this->db->get_where('tbinfotugas', ['dateUse <=' => date('Y-m-d')])->result_array();

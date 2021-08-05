@@ -56,12 +56,12 @@
           </a>
         </li>
 
-        <!-- Pretest & Posttest Menu -->
+        <!-- Interaksi & Feedback Menu -->
         <li class="nav-item">
-          <a href="<?= base_url('Admin/tests'); ?>" class="nav-link <?= $title == 'Pretest & Posttest' ? 'active' : ''; ?>">
+          <a href="<?= base_url('Admin/tests'); ?>" class="nav-link <?= $title == 'Interaksi & Feedback' ? 'active' : ''; ?>">
             <i class="nav-icon fas fa-book"></i>
             <p>
-              Pretest & Posttest
+              Interaksi & Feedback
             </p>
           </a>
         </li>
