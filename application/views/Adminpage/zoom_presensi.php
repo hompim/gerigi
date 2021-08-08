@@ -56,8 +56,8 @@
                   <td class="text-center"><?= $i++; ?></td>
                   <td><?= $list['dateUse']; ?></td>
                   <td><?= $list['namaKelBesar']; ?></td>
-                  <td><?= $list['link_zoom']; ?></td>
-                  <td><?= $list['link_presensi']; ?></td>
+                  <td><?= "<a href='".$list['link_zoom']."' target='_blank'>".$list['link_zoom']."</a>"; ?></td>
+                  <td><?= "<a href='".$list['link_presensi']."' target='_blank'>".$list['link_presensi']."</a>"; ?></td>
                   <td class="text-center">
                     <a href="editLink/<?= $list['id']?>" class="btn btn-primary btn-sm">
                       Ubah
