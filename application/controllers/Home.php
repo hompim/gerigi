@@ -25,6 +25,7 @@ class Home extends CI_Controller
 		parent::__construct();
 		$this->load->model('ModelLogin');
 		$this->load->helper('form', 'url');
+		date_default_timezone_set("Asia/Jakarta");
 	}
 
 	public function index()
@@ -108,7 +109,8 @@ class Home extends CI_Controller
 
 		$data = array(
 			'userPass' => md5($newPass),
-			'status' => 1
+			'status' => 1,
+			'dateUpdate' => date('Y-m-d H:i:s')
 		);
 
 		$where = array(
