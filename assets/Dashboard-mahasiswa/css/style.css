@@ -29,8 +29,8 @@
 
 /* navbar sections start */
 .navbar{
-    background: linear-gradient(#fff 0%, rgba(255, 255, 255, 0) 100%);
-    background-color: transparent;
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(196, 196, 196, 0) 292.36%);
+
 }
 .navbar-toggler:focus {
     box-shadow: none;

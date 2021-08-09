@@ -21,7 +21,7 @@ class Mahasiswa extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if ($this->session->userdata('status')!='login') {
+		if ($this->session->userdata('status')!='login' || $this->session->userdata('role')!='maba') {
 			redirect();
 		}
 		date_default_timezone_set("Asia/Jakarta");
@@ -31,6 +31,7 @@ class Mahasiswa extends CI_Controller {
 	{
 		$idKelBesar = $this->session->userdata('idKelBesar');
 		$dateUse = date('Y-m-d');
+		// $dateUse = '2021-08-14';
 		$data['klmpkkecil'] = $this->db->get_where('tbkelkecil',['idKelKecil' => $this->session->userdata('idKelKecil')])->row_array();
 		$data['klmpkbesar'] = $this->db->get_where('tbkelbesar',['idKelBesar' => $this->session->userdata('idKelBesar')])->row_array();
 		$idKelKecil = $this->session->userdata('idKelKecil');
